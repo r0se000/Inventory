@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %} 입고등록  {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+      <br>
+      <h1>입고등록</h1>
+      <br>  
+        <form method="GET", action="{% url 'input_add' %}">
+          <div class="form-group row">
+            <label for="pname" class="col-sm-2 col-form-label">제품선택</label>
+            <div class="col-sm-10">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="BCG" name="pname" value="BCG" class="custom-control-input">
+                <label class="custom-control-label" for="BCG">BCG</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="CCTV" name="pname" value="CCTV" class="custom-control-input">
+                <label class="custom-control-label" for="CCTV">CCTV</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="device_id" class="col-sm-2 col-form-label">기기ID</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="device_id" placeholder="기기ID">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="input_date" class="col-sm-2 col-form-label">입고일자</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" name="input_date" placeholder="입고일자">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="price" class="col-sm-2 col-form-label">구매단가</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="price" placeholder="구매단가">
+            </div>
+          </div>
+        <br>
+        <button type="submit" class="btn btn-primary">입고등록</button>
+        </form>
+
+    </div>
+      <br>
+      <br>
+      <!-- 내역 -->
+      <div class="container">
+          <h2>입고내역</h2>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">제품명</th>
+                  <th scope="col">기기ID</th>
+                  <th scope="col">입고일자</th>
+                  <th scope="col">구매단가</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for content in contents %}
+                  <tr>
+                    <th scope="row">{{content.p_name}}</th>
+                    <td>{{content.device_id}}</td>
+                    <td>{{content.input_date|date:'Y-m-d'}}</td>
+                    <td>{{content.price}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+      </div>
+    </div>
+{% endblock %}

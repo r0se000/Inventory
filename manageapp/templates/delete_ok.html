@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} 확인  {% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<center>
+    <div class="card" style="width: 30%;">
+        <div class="card-body">
+          <h5 class="card-title">'{{p_name}}', '{{device_id}}' 기기정보가 삭제되었습니다.</h5>
+            <a href="{% url 'delete'%}"><button type="button" class="btn btn-primary">돌아가기</button></a>
+        </div>
+      </div>
+    <!-- <div class="container">
+        <h2>'{{p_name}}', '{{device_id}}' 기기정보가 삭제되었습니다.</h2>
+        <br>
+        <a href="{% url 'delete'%}"><button type="button" class="btn btn-primary">돌아가기</button></a>
+    </div> -->
+</center>
+{% endblock %}
